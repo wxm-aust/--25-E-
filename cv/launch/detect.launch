@@ -1,0 +1,20 @@
+<launch>
+    <!-- 启动 detect.py 节点 -->
+    <node name="detect_node" pkg="cv" type="detect.py"  output="screen"/>
+    <!-- <node name="receive_node" pkg="cv" type="receive_image.py" output="screen" /> -->
+
+    <!-- 启动 dynamic_reconfigure 服务（由detect.py自动加载PIDConfig，无需单独节点） -->
+
+    <!-- 启动 rqt_reconfigure 工具，便于调参（可选，需安装rqt_reconfigure） -->
+    <!-- <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" output="screen" required="false" /> -->
+
+    <node name="munu_node" pkg="qt" type="menu.py"  />
+    <!-- <node name="serial_sender" pkg="serial_sender" type="serial_sender_node" >
+        <param name="port" value="/dev/ttyS3"/>
+        <param name="baud_rate" value="115200"/>
+    </node> --> 
+    <node name="serial_receiver" pkg="serial_sender" type="serial_receiver_node" >
+        <param name="port" value="/dev/ttyS4"/>
+        <param name="baud_rate" value="9600"/>
+    </node>
+</launch>

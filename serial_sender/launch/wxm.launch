@@ -1,0 +1,13 @@
+<launch>
+    <!-- 发送节点 -->
+    <node name="serial_sender" pkg="serial_sender" type="serial_sender_node" output="screen">
+        <param name="port" value="/dev/ttyS3"/>
+        <param name="baud_rate" value="115200"/>
+    </node>
+
+    <!-- 接收节点 -->
+    <node name="serial_receiver" pkg="serial_sender" type="serial_receiver_node" output="screen">
+        <param name="port" value="/dev/ttyS4"/>
+        <param name="baud_rate" value="115200"/>
+    </node>
+</launch>
